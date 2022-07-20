@@ -1,5 +1,5 @@
+import { theme } from '@/constants/theme';
 import styled from 'styled-components';
-import { theme } from '../../constants/theme';
 
 export const SBoardSwitcher = styled.div`
   display: grid;

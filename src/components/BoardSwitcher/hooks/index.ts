@@ -1,2 +1,1 @@
-export { useGetBoards } from './useGetBoards';
-export { useBoardSwitcher } from './useBoardSwitcher';
+export { useBoardsSwitcher } from './useBoardsSwitcher';

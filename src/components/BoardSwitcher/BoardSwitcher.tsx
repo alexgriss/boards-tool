@@ -1,35 +1,27 @@
-import { BoardSwitcherAddButton, BoardSwitcherItem, Text } from '../../atoms';
-import { useGetBoards } from './hooks';
+import { BoardSwitcherAddButton, BoardSwitcherItem } from '@/atoms';
+import { useBoardsSwitcher } from './hooks';
 import { SBoardSwitcher } from './styles';
 
 export const BoardSwitcher = () => {
-  const { boards, addNewBoard, activeBoard, setActiveBoard, RSBoardSwitcher } =
-    useGetBoards();
+  const {
+    boards,
+    addNewBoard,
+    activeBoardId,
+    RSBoardSwitcher,
+    onBoardItemClick,
+  } = useBoardsSwitcher();
 
   return (
-    <div>
-      <SBoardSwitcher ref={RSBoardSwitcher}>
-        {boards.map((board) => (
-          <BoardSwitcherItem
-            key={board.id}
-            board={board}
-            isActive={activeBoard === board.id}
-            onClick={() => {
-              setActiveBoard(board.id);
-            }}
-          />
-        ))}
-        <BoardSwitcherAddButton
-          onClick={() => {
-            addNewBoard();
-          }}
+    <SBoardSwitcher ref={RSBoardSwitcher}>
+      {boards.map((board) => (
+        <BoardSwitcherItem
+          key={board.id}
+          board={board}
+          isActive={activeBoardId === board.id}
+          onClick={onBoardItemClick(board.id)}
         />
-      </SBoardSwitcher>
-      <div style={{ marginTop: 24 }} />
-      <Text size="l" color="main">
-        {boards[activeBoard].title} Content
-        {boards[activeBoard].id !== 0 && ` (${boards[activeBoard].id})`}
-      </Text>
-    </div>
+      ))}
+      <BoardSwitcherAddButton onClick={addNewBoard} />
+    </SBoardSwitcher>
   );
 };

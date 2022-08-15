@@ -1,4 +1,6 @@
-import { BoardSwitcherAddButton, BoardSwitcherItem } from '@/atoms';
+import { BoardSwitcherAddButton } from '@/atoms';
+import { withDND } from '@/hocs';
+import { BoardSwitcherItem } from '../BoardSwitcherItem';
 import { useBoardsSwitcher } from './hooks';
 import { SBoardSwitcher } from './styles';
 
@@ -9,9 +11,12 @@ export const BoardSwitcher = () => {
     activeBoardId,
     RSBoardSwitcher,
     onBoardItemClick,
+    moveCard,
   } = useBoardsSwitcher();
 
-  return (
+  console.log(boards);
+
+  const BoardSwitcherComponent = (
     <SBoardSwitcher ref={RSBoardSwitcher}>
       {boards.map((board) => (
         <BoardSwitcherItem
@@ -19,9 +24,12 @@ export const BoardSwitcher = () => {
           board={board}
           isActive={activeBoardId === board.id}
           onClick={onBoardItemClick(board.id)}
+          moveCard={moveCard}
         />
       ))}
       <BoardSwitcherAddButton onClick={addNewBoard} />
     </SBoardSwitcher>
   );
+
+  return withDND(BoardSwitcherComponent);
 };

@@ -3,6 +3,7 @@ import { theme } from '../../constants/theme';
 
 interface ISBoardSwitcherItem {
   isActive: boolean;
+  isDragging: boolean;
 }
 
 export const SBoardSwitcherItem = styled.div<ISBoardSwitcherItem>`
@@ -20,7 +21,10 @@ export const SBoardSwitcherItem = styled.div<ISBoardSwitcherItem>`
     ${({ isActive }: ISBoardSwitcherItem) =>
       isActive ? theme.text.main : 'transparent'};
 
+  opacity: ${({ isDragging }: ISBoardSwitcherItem) => (isDragging ? 0 : 1)};
+
   transition: 0.3s;
+  transition-property: border-bottom;
 
   cursor: pointer;
   user-select: none;

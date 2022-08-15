@@ -3,6 +3,7 @@ import { generateMocks } from '@/utils';
 import { useRef, useState } from 'react';
 import { useAddNewBoard } from './useAddNewBoard';
 import { useClickOnBoardItem } from './useClickOnBoardItem';
+import { useMoveCard } from './useMoveCard';
 import { useSetActiveBoardId } from './useSetActiveBoardId';
 
 const boardsMock = generateMocks(
@@ -29,11 +30,14 @@ export const useBoardsSwitcher = () => {
     activeBoardId,
   });
 
+  const { moveCard } = useMoveCard({ boardsState, setBoardsState });
+
   return {
     activeBoardId,
     boards: boardsState,
     addNewBoard,
     RSBoardSwitcher,
     onBoardItemClick,
+    moveCard,
   };
 };

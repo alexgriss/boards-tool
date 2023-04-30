@@ -1,15 +1,33 @@
-# The best frontend app in the world
+# Boiler-replate
 
-## Tech stack
+> **A base boilerplate to start develop your application with the latest React based on webpack**
 
-- **webpack** (bundle loader)
+## Quick start
 
-- **babel** (code compiler)
+* `npm start` to serve an application with webpack-dev-server (with enabled hot-reloading)
 
-- **typescript** (main programming language)
+* `npm build` to build a production-ready version of an application
 
-- **react** (UI library)
+## Included dependencies
 
-- **recoil** (state manager)
+* `typescript`
 
-- **styled-components** (components styling library)
+* `react`
+
+* `react-dom`
+
+* `react-router-dom`
+
+* `styled-components`
+
+* `eslint`
+
+* `prettier`
+
+* `webpack`
+
+## File structure
+
+This boilerplate is based on [Feature-Sliced Design](https://feature-sliced.design/)
+
+> You can use `@` sign for es6 imports as an alias of  `src` folder, e.g.: `@/widgets`

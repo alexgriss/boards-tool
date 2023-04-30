@@ -44,6 +44,7 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+      title: `Boiler-replate v${process.env.npm_package_version}`,
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,

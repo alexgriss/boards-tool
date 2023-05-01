@@ -49,6 +49,7 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+      title: `Boiler-replate v${process.env.npm_package_version}`,
     }),
     new HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
@@ -64,7 +65,6 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 4000,
     open: true,
-    hot: true,
   },
 };
 

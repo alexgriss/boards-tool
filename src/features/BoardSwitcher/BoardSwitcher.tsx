@@ -28,6 +28,7 @@ export const BoardSwitcher = () => {
           moveCard={moveCard}
         />
       ))}
+
       <BoardSwitcherAddButton onClick={addNewBoard} />
     </SBoardSwitcher>
   );

@@ -1,6 +1,7 @@
-import { TBoard } from '@/entities';
 import { useEffect, useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+
+import { TBoard } from '@/entities';
 
 interface IUseBoardSwitcherItem {
   boards: TBoard[];
@@ -63,6 +64,7 @@ export const useBoardSwitcherItem = ({
       }
 
       moveCard(dragIndex, hoverIndex);
+      console.log('moved');
 
       (monitor.getItem() as Record<'index', number>).index = hoverIndex;
     },

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Icon } from '@/widgets';
 
 interface ISBoardSwitcherItem {
-  isActive: boolean;
-  isDragging: boolean;
+  $isActive: boolean;
+  $isDragging: boolean;
 }
 
 export const SBoardSwitcherItem = styled.div<ISBoardSwitcherItem>`
@@ -19,9 +19,9 @@ export const SBoardSwitcherItem = styled.div<ISBoardSwitcherItem>`
   padding: 4px 8px 8px;
 
   border-bottom: 2px solid
-    ${({ isActive, theme }) => (isActive ? theme.text.main : 'transparent')};
+    ${({ $isActive, theme }) => ($isActive ? theme.text.main : 'transparent')};
 
-  opacity: ${({ isDragging }) => (isDragging ? 0 : 1)};
+  opacity: ${({ $isDragging }) => ($isDragging ? 0 : 1)};
 
   transition: 0.3s;
   transition-property: border-bottom;
@@ -61,8 +61,8 @@ export const SBoardSwitcherItem = styled.div<ISBoardSwitcherItem>`
   }
 `;
 
-export const SIcon = styled(Icon).attrs<{ isActive: boolean }>(
-  ({ isActive, theme }) => ({
-    fill: isActive ? theme.text.main : theme.text.title,
+export const SIcon = styled(Icon).attrs<{ $isActive: boolean }>(
+  ({ $isActive, theme }) => ({
+    fill: $isActive ? theme.text.main : theme.text.title,
   })
 )``;

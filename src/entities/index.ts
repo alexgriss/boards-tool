@@ -1,1 +1,2 @@
-export { type TBoard } from './boards';
+export * from './boards';
+export * from './boardItems';

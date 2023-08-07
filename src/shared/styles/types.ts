@@ -1,23 +1,44 @@
-type Attributes = {
-  border: string;
-};
-
-type Text = {
-  main: string;
-  title: string;
-};
-
-type Button = {
-  hover: string;
-  active: string;
-};
-
-type Elements = {
-  button: Button;
-};
-
 export type Theme = {
-  attributes: Attributes;
-  text: Text;
-  elements: Elements;
+  body: {
+    background: {
+      color: string;
+    };
+  };
+  text: {
+    title: {
+      color: string;
+    };
+    main: {
+      color: string;
+    };
+  };
+  button: {
+    hover: {
+      color: string;
+    };
+    active: {
+      color: string;
+    };
+  };
+  border: {
+    color: string;
+  };
+  boardGroup: {
+    background: {
+      color: string;
+    };
+    header: {
+      text: {
+        color: string;
+      };
+    };
+  };
+  boardItem: {
+    text: {
+      color: string;
+    };
+    background: {
+      color: string;
+    };
+  };
 };

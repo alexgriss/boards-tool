@@ -1,4 +1,4 @@
-import { SIcon } from './styled';
+import { IconWrapper } from './styled';
 import { IIconMainProps } from './types';
 
 interface IIcon extends IIconMainProps {
@@ -6,7 +6,7 @@ interface IIcon extends IIconMainProps {
 }
 
 export const Icon = ({ width, height, fill, icon }: IIcon) => (
-  <SIcon width={width} height={height} fill={fill}>
+  <IconWrapper width={width} height={height} fill={fill}>
     {icon}
-  </SIcon>
+  </IconWrapper>
 );

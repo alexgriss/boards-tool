@@ -1,4 +1,4 @@
 export type TBoard = {
-  id: number;
+  id: string;
   title: string;
 };

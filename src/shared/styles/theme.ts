@@ -1,17 +1,91 @@
 import { Theme } from './types';
 
-export const theme: Theme = {
-  attributes: {
-    border: '#cccccc',
+export const darkTheme: Theme = {
+  body: {
+    background: {
+      color: '#191919',
+    },
   },
   text: {
-    main: '#333333',
-    title: '#888888',
+    title: {
+      color: '#ddd',
+    },
+    main: {
+      color: '#ddd',
+    },
   },
-  elements: {
-    button: {
-      hover: '#eeeeee',
-      active: '#e0e0e0',
+  button: {
+    hover: {
+      color: '#333',
+    },
+    active: {
+      color: '#333',
+    },
+  },
+  border: {
+    color: '#333',
+  },
+  boardGroup: {
+    background: {
+      color: '#fff',
+    },
+    header: {
+      text: {
+        color: '#fff',
+      },
+    },
+  },
+  boardItem: {
+    text: {
+      color: '#eee',
+    },
+    background: {
+      color: '#ddd',
+    },
+  },
+};
+
+export const theme: Theme = {
+  body: {
+    background: {
+      color: '#fff',
+    },
+  },
+  text: {
+    title: {
+      color: '#333',
+    },
+    main: {
+      color: '#333',
+    },
+  },
+  button: {
+    hover: {
+      color: '#ddd',
+    },
+    active: {
+      color: '#ddd',
+    },
+  },
+  border: {
+    color: '#333',
+  },
+  boardGroup: {
+    background: {
+      color: '#ddd',
+    },
+    header: {
+      text: {
+        color: '#333',
+      },
+    },
+  },
+  boardItem: {
+    text: {
+      color: '#333',
+    },
+    background: {
+      color: '#bbb',
     },
   },
 };

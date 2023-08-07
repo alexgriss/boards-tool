@@ -1,0 +1,1 @@
+export { useBoardsPage } from './useBoardsPage';

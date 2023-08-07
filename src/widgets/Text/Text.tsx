@@ -1,4 +1,4 @@
-import { SText } from './styled';
+import { TextWrapper } from './styled';
 import { TTextColor, TTextSize } from './types';
 
 interface IText {
@@ -8,7 +8,7 @@ interface IText {
 }
 
 export const Text = ({ size, color, children }: IText) => (
-  <SText size={size} color={color}>
+  <TextWrapper size={size} color={color}>
     {children}
-  </SText>
+  </TextWrapper>
 );

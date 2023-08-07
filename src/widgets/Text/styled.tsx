@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { TTextColor, TTextSize } from './types';
+
 import { Theme } from '@/shared';
 
-interface ISText {
+import { TTextColor, TTextSize } from './types';
+
+interface ITextWrapper {
   size: TTextSize;
   color: TTextColor;
 }
@@ -17,9 +19,9 @@ const sizeDict: Record<TTextSize, number> = {
 
 const getFontSize = ({ size }: { size: TTextSize }) => sizeDict[size];
 const getColor = ({ color, theme }: { color: TTextColor; theme: Theme }) =>
-  theme.text[color];
+  theme.text[color].color;
 
-export const SText = styled.div<ISText>`
+export const TextWrapper = styled.div<ITextWrapper>`
   font-size: ${getFontSize}px;
   color: ${getColor};
 `;

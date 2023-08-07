@@ -1,1 +1,0 @@
-export { useBoardsSwitcher } from './useBoardsSwitcher';

@@ -9,7 +9,7 @@ const getSizes = ({
   ${height ? 'height: ' + height + 'px' : 'height: auto'};
 `;
 
-export const SIcon = styled.div<IIconMainProps>`
+export const IconWrapper = styled.div<IIconMainProps>`
   ${({ width, height }: Pick<IIconMainProps, 'width' | 'height'>) =>
     getSizes({ width, height })};
 

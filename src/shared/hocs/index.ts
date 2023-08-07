@@ -1,1 +1,0 @@
-export { withDND } from './withDND';

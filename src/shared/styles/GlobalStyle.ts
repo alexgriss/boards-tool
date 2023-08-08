@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     background: linear-gradient(-45deg, #496fdf, #9a3ce7, #079977, #0d8499);
     background-size: 400% 400%;
 
-    min-height: 100vh;
+    min-height: calc(100% - 38px);
   }
 
   * {

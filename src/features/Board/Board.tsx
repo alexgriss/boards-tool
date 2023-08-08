@@ -71,7 +71,7 @@ export const Board = ({
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <BoardWrapper ref={boardRef}>
+      <BoardWrapper ref={boardRef} id="board">
         <SortableContext
           items={cardGroups}
           strategy={horizontalListSortingStrategy}

@@ -1,7 +1,5 @@
 import { Dispatch, RefObject, SetStateAction, useEffect } from 'react';
 
-import { scrollIntoView } from '@/shared';
-
 interface IUseClickBoardItem {
   activeBoardId: string;
   setActiveBoardId: Dispatch<SetStateAction<string>>;
@@ -19,7 +17,10 @@ export const useClickBoardItem = ({
     const boardElement = boardPickerRef.current?.children.namedItem(boardId);
 
     if (boardElement) {
-      scrollIntoView(boardElement);
+      (boardElement.parentNode as HTMLElement).scroll({
+        left: (boardElement as HTMLElement).offsetLeft - 20,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -28,7 +29,10 @@ export const useClickBoardItem = ({
       boardPickerRef.current?.children.namedItem(activeBoardId);
 
     if (activeBoardElement) {
-      scrollIntoView(activeBoardElement);
+      (activeBoardElement.parentNode as HTMLElement).scroll({
+        left: (activeBoardElement as HTMLElement).offsetLeft - 20,
+        behavior: 'smooth',
+      });
     }
   }, [activeBoardId, boardPickerRef]);
 

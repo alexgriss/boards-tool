@@ -242,7 +242,7 @@ export const useBoard = ({
 
     if (boardElement) {
       (boardElement.parentNode as HTMLElement).scroll({
-        left: (boardElement as HTMLElement).offsetLeft,
+        left: (boardElement as HTMLElement).offsetLeft - 20,
         behavior: 'smooth',
       });
     }

@@ -7,9 +7,16 @@ export const GlobalStyle = createGlobalStyle`
 
     background-color: ${({ theme }) => theme.body.background.color};
 
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-family: Nunito, Arial, Helvetica, sans-serif;
+    font-weight: 300;
   }
 
+  body {
+    background: linear-gradient(-45deg, #496fdf, #9a3ce7, #079977, #0d8499);
+    background-size: 400% 400%;
+
+    min-height: 100vh;
+  }
 
   * {
     box-sizing: border-box;

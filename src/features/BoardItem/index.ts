@@ -1,1 +1,0 @@
-export { BoardItem } from './BoardItem';

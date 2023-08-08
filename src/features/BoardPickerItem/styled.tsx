@@ -26,8 +26,7 @@ export const BoardPickerItemWrapper = styled.div<ISBoardPickerItem>`
   opacity: ${({ $isDragging, $isDragOverlay }) =>
     $isDragOverlay ? 0.5 : $isDragging ? 0 : 1};
 
-  transition-duration: 0.3s;
-  transition-property: border-bottom;
+  transition: 0.5s;
 
   cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'pointer')};
   user-select: none;
@@ -53,13 +52,13 @@ export const BoardPickerItemWrapper = styled.div<ISBoardPickerItem>`
 
   &:hover {
     &::after {
-      background-color: ${({ theme }) => theme.button.hover.color};
+      background-color: rgba(255, 255, 255, 0.5);
     }
   }
 
   &:active {
     &::after {
-      background-color: ${({ theme }) => theme.button.active.color};
+      background-color: rgba(255, 255, 255, 0.5);
     }
   }
 `;

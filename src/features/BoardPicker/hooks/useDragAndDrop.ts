@@ -15,7 +15,7 @@ import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { TBoard } from '@/entities';
 
 const activationConstraint = {
-  delay: 75,
+  delay: 100,
   tolerance: 5,
 };
 

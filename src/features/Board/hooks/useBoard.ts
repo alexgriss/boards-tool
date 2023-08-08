@@ -13,21 +13,24 @@ import {
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 
-import { TBoardGroups } from '@/entities';
+import { TCardGroups } from '@/entities';
+import { generateRandomString, scrollIntoView } from '@/shared/utils';
 
 import { useCollisionDetectionStrategy } from './useCollisionDetectionStrategy';
 import { coordinateGetter } from './coordinateGetter';
 
 interface IUseBoard {
-  boardItems: TBoardGroups;
-  setBoardItems: Dispatch<SetStateAction<TBoardGroups>>;
-  setBoardGroups: Dispatch<SetStateAction<UniqueIdentifier[]>>;
+  cards: TCardGroups;
+  setCards: Dispatch<SetStateAction<TCardGroups>>;
+  cardGroups: UniqueIdentifier[];
+  setCardGroups: Dispatch<SetStateAction<UniqueIdentifier[]>>;
 }
 
 export const useBoard = ({
-  boardItems,
-  setBoardItems,
-  setBoardGroups,
+  cards,
+  setCards,
+  cardGroups,
+  setCardGroups,
 }: IUseBoard) => {
   const boardRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +38,7 @@ export const useBoard = ({
 
   const recentlyMovedToNewContainer = useRef(false);
 
-  const [clonedItems, setClonedItems] = useState<TBoardGroups | null>(null);
+  const [clonedItems, setClonedItems] = useState<TCardGroups | null>(null);
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -48,28 +51,28 @@ export const useBoard = ({
   const { collisionDetectionStrategy } = useCollisionDetectionStrategy({
     recentlyMovedToNewContainer,
     activeId,
-    boardItems,
+    cards,
   });
 
   const handleDragStart = ({ active }: DragStartEvent) => {
     setActiveId(active.id);
-    setClonedItems(boardItems);
+    setClonedItems(cards);
   };
 
   const findContainer = (id: UniqueIdentifier) => {
-    if (id in boardItems) {
+    if (id in cards) {
       return id;
     }
 
-    return Object.keys(boardItems).find((key) =>
-      boardItems[key].find((item) => item.id === id)
+    return Object.keys(cards).find((key) =>
+      cards[key].find((item) => item.id === id)
     );
   };
 
   const handleDragOver = ({ active, over }: DragOverEvent) => {
     const overId = over?.id;
 
-    if (overId == null || active.id in boardItems) {
+    if (overId == null || active.id in cards) {
       return;
     }
 
@@ -81,7 +84,7 @@ export const useBoard = ({
     }
 
     if (activeContainer !== overContainer) {
-      setBoardItems((items) => {
+      setCards((items) => {
         const activeItems = items[activeContainer];
         const overItems = items[overContainer];
         const overItem = overItems.find((item) => item.id === overId);
@@ -127,8 +130,8 @@ export const useBoard = ({
   };
 
   const handleDragEnd = ({ active, over }: DragEndEvent) => {
-    if (active.id in boardItems && over?.id) {
-      setBoardGroups((containers) => {
+    if (active.id in cards && over?.id) {
+      setCardGroups((containers) => {
         const activeIndex = containers.indexOf(active.id);
         const overIndex = containers.indexOf(over.id);
 
@@ -153,21 +156,17 @@ export const useBoard = ({
     const overContainer = findContainer(overId);
 
     if (overContainer) {
-      const activeItem = boardItems[activeContainer].find(
+      const activeItem = cards[activeContainer].find(
         (item) => item.id === active.id
       );
       const activeIndex = activeItem
-        ? boardItems[activeContainer].indexOf(activeItem)
+        ? cards[activeContainer].indexOf(activeItem)
         : -1;
-      const overItem = boardItems[overContainer].find(
-        (item) => item.id === overId
-      );
-      const overIndex = overItem
-        ? boardItems[overContainer].indexOf(overItem)
-        : -1;
+      const overItem = cards[overContainer].find((item) => item.id === overId);
+      const overIndex = overItem ? cards[overContainer].indexOf(overItem) : -1;
 
       if (activeIndex !== overIndex) {
-        setBoardItems((items) => ({
+        setCards((items) => ({
           ...items,
           [overContainer]: arrayMove(
             items[overContainer],
@@ -185,14 +184,14 @@ export const useBoard = ({
     if (clonedItems) {
       // Reset items to their original state in case items have been
       // Dragged across containers
-      setBoardItems(clonedItems);
+      setCards(clonedItems);
     }
 
     setActiveId(null);
     setClonedItems(null);
   };
 
-  const activeBoardItem = Object.values(boardItems)
+  const activeCard = Object.values(cards)
     .flat()
     .find((item) => item.id === activeId);
 
@@ -200,7 +199,43 @@ export const useBoard = ({
     requestAnimationFrame(() => {
       recentlyMovedToNewContainer.current = false;
     });
-  }, [boardItems]);
+  }, [cards]);
+
+  const addNewCard = (cardGroupId: string) => {
+    const newCardId = generateRandomString();
+
+    setCards((prev) => ({
+      ...prev,
+      [cardGroupId]: [
+        ...prev[cardGroupId],
+        {
+          id: newCardId,
+          title: `Card #${newCardId}`,
+        },
+      ],
+    }));
+  };
+
+  const addNewCardGroup = () => {
+    const newCardId = generateRandomString();
+
+    setCards((prev) => ({
+      ...prev,
+      [newCardId]: [],
+    }));
+
+    setCardGroups((prev) => [...prev, newCardId]);
+  };
+
+  useEffect(() => {
+    const boardElement = boardRef.current?.children.namedItem(
+      String(cardGroups[cardGroups.length - 1])
+    );
+
+    if (boardElement) {
+      scrollIntoView(boardElement);
+    }
+  }, [cardGroups]);
 
   return {
     boardRef,
@@ -213,6 +248,9 @@ export const useBoard = ({
     handleDragCancel,
 
     activeId,
-    activeBoardItem,
+    activeCard,
+
+    addNewCard,
+    addNewCardGroup,
   };
 };

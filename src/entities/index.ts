@@ -1,2 +1,2 @@
 export * from './boards';
-export * from './boardItems';
+export * from './cards';

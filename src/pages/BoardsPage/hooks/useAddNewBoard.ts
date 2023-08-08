@@ -18,7 +18,10 @@ export const useAddNewBoard = ({
 
       setActiveBoardId(newBoardId);
 
-      return [...prevState, { id: newBoardId, title: 'New Board' }];
+      return [
+        ...prevState,
+        { id: newBoardId, title: `New Board #${newBoardId}` },
+      ];
     });
   };
 

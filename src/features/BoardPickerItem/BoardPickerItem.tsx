@@ -44,7 +44,7 @@ const BoardPickerItemView = (
         $isActive={isActive}
       />
       <Text size="s" color={isActive ? 'main' : 'title'}>
-        {board.title} ({board.id})
+        {board.title}
       </Text>
     </BoardPickerItemWrapper>
   );

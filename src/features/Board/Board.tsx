@@ -12,27 +12,28 @@ import {
   horizontalListSortingStrategy,
 } from '@dnd-kit/sortable';
 
-import { TBoardGroups } from '@/entities';
+import { TCardGroups } from '@/entities';
 import { SortableItem } from '@/widgets';
 
-import { BoardGroup } from '../BoardGroup';
-import { BoardItem } from '../BoardItem';
+import { CardGroup } from '../CardGroup';
+import { Card } from '../Card';
 
 import { BoardWrapper } from './styled';
 import { useBoard } from './hooks';
+import { AddCardGroupButton } from './ui';
 
 interface IBoard {
-  boardItems: TBoardGroups;
-  setBoardItems: Dispatch<SetStateAction<TBoardGroups>>;
-  boardGroups: UniqueIdentifier[];
-  setBoardGroups: Dispatch<SetStateAction<UniqueIdentifier[]>>;
+  cards: TCardGroups;
+  setCards: Dispatch<SetStateAction<TCardGroups>>;
+  cardGroups: UniqueIdentifier[];
+  setCardGroups: Dispatch<SetStateAction<UniqueIdentifier[]>>;
 }
 
 export const Board = ({
-  boardItems,
-  setBoardItems,
-  boardGroups,
-  setBoardGroups,
+  cards,
+  setCards,
+  cardGroups,
+  setCardGroups,
 }: IBoard) => {
   const {
     boardRef,
@@ -45,11 +46,15 @@ export const Board = ({
     handleDragCancel,
 
     activeId,
-    activeBoardItem,
+    activeCard,
+
+    addNewCard,
+    addNewCardGroup,
   } = useBoard({
-    boardItems,
-    setBoardItems,
-    setBoardGroups,
+    cards,
+    setCards,
+    cardGroups,
+    setCardGroups,
   });
 
   return (
@@ -68,39 +73,48 @@ export const Board = ({
     >
       <BoardWrapper ref={boardRef}>
         <SortableContext
-          items={boardGroups}
+          items={cardGroups}
           strategy={horizontalListSortingStrategy}
         >
-          {boardGroups.map((groupId) => (
+          {cardGroups.map((groupId) => (
             <SortableItem key={groupId} sortableItemId={groupId}>
               {({ setNodeRef, style, attributes, listeners, isDragging }) => (
-                <BoardGroup
-                  {...attributes}
-                  {...listeners}
+                <CardGroup
+                  attributes={attributes}
+                  listeners={listeners}
                   ref={setNodeRef}
                   style={style}
                   groupId={String(groupId)}
-                  boardGroup={boardItems[groupId]}
+                  cardGroup={cards[groupId]}
                   isDragging={isDragging}
+                  addNewCard={addNewCard}
                 />
               )}
             </SortableItem>
           ))}
+          <SortableItem
+            key="addCardGroupButton"
+            sortableItemId="addCardGroupButton"
+          >
+            {({ setNodeRef }) => (
+              <AddCardGroupButton ref={setNodeRef} onClick={addNewCardGroup} />
+            )}
+          </SortableItem>
         </SortableContext>
       </BoardWrapper>
 
       {createPortal(
         <DragOverlay>
           {activeId ? (
-            boardGroups.includes(activeId) ? (
-              <BoardGroup
+            cardGroups.includes(activeId) ? (
+              <CardGroup
                 isDragging
                 isDragOverlay
                 groupId={String(activeId)}
-                boardGroup={boardItems[activeId]}
+                cardGroup={cards[activeId]}
               />
             ) : (
-              <BoardItem isDragging isDragOverlay boardItem={activeBoardItem} />
+              <Card isDragging isDragOverlay card={activeCard} />
             )
           ) : null}
         </DragOverlay>,

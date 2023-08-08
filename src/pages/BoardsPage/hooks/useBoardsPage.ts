@@ -2,36 +2,35 @@ import { useEffect, useState } from 'react';
 
 import { UniqueIdentifier } from '@dnd-kit/core';
 
-import { TBoard, TBoardGroups, TBoardItem } from '@/entities';
+import { TBoard, TCardGroups, TCard } from '@/entities';
 import { generateMocks } from '@/shared';
 
 import { useAddNewBoard } from './useAddNewBoard';
-import { generateSentence } from '@/shared/utils';
 
 const boardsMock = generateMocks(
   {
-    title: 'New Board',
+    title: 'Board',
   } as TBoard,
   5
 );
 
-const boardsItemsMock: TBoardGroups = {
-  A: generateMocks(
+const cardsMock: TCardGroups = {
+  New: generateMocks(
     {
-      title: generateSentence(),
-    } as TBoardItem,
+      title: 'Card',
+    } as TCard,
     4
   ),
-  B: generateMocks(
+  'In progress': generateMocks(
     {
-      title: generateSentence(),
-    } as TBoardItem,
+      title: 'Card',
+    } as TCard,
     3
   ),
-  C: generateMocks(
+  Finished: generateMocks(
     {
-      title: generateSentence(),
-    } as TBoardItem,
+      title: 'Card',
+    } as TCard,
     5
   ),
 };
@@ -41,21 +40,22 @@ export const useBoardsPage = () => {
 
   const [activeBoardId, setActiveBoardId] = useState(boards[0].id);
 
-  const [boardItems, setBoardItems] = useState(boardsItemsMock);
+  const [cards, setCards] = useState(cardsMock);
+
+  const [cardGroups, setCardGroups] = useState(
+    Object.keys(cards) as UniqueIdentifier[]
+  );
 
   const { addNewBoard } = useAddNewBoard({
     setBoards,
     setActiveBoardId,
   });
 
-  const [boardGroups, setBoardGroups] = useState(
-    Object.keys(boardItems) as UniqueIdentifier[]
-  );
-
   useEffect(() => {
     if (activeBoardId) {
-      setBoardItems(boardsItemsMock);
-      setBoardGroups(Object.keys(boardsItemsMock) as UniqueIdentifier[]);
+      setCards(cardsMock);
+
+      setCardGroups(Object.keys(cardsMock) as UniqueIdentifier[]);
     }
   }, [activeBoardId]);
 
@@ -66,9 +66,9 @@ export const useBoardsPage = () => {
     activeBoardId,
     setActiveBoardId,
 
-    boardItems,
-    setBoardItems,
-    boardGroups,
-    setBoardGroups,
+    cards,
+    setCards,
+    cardGroups,
+    setCardGroups,
   };
 };

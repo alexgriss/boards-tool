@@ -7,7 +7,8 @@ export const AddBoardButtonWrapper = styled.div`
   padding: 4px 12px 8px;
 
   font-size: 18px;
-  color: ${({ theme }) => theme.text.title.color};
+
+  color: rgba(0, 0, 0, 0.8);
 
   transition: 0.5s;
 
@@ -31,13 +32,13 @@ export const AddBoardButtonWrapper = styled.div`
 
   &:hover {
     &::after {
-      background-color: ${({ theme }) => theme.button.hover.color};
+      background-color: rgba(255, 255, 255, 0.5);
     }
   }
 
   &:active {
     &::after {
-      background-color: ${({ theme }) => theme.button.active.color};
+      background-color: rgba(255, 255, 255, 0.5);
     }
   }
 `;

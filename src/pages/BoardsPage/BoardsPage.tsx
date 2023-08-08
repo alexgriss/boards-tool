@@ -10,10 +10,10 @@ export const BoardsPage = () => {
     activeBoardId,
     setActiveBoardId,
 
-    boardItems,
-    setBoardItems,
-    boardGroups,
-    setBoardGroups,
+    cards,
+    setCards,
+    cardGroups,
+    setCardGroups,
   } = useBoardsPage();
 
   return (
@@ -27,10 +27,10 @@ export const BoardsPage = () => {
       />
 
       <Board
-        boardItems={boardItems}
-        setBoardItems={setBoardItems}
-        boardGroups={boardGroups}
-        setBoardGroups={setBoardGroups}
+        cards={cards}
+        setCards={setCards}
+        cardGroups={cardGroups}
+        setCardGroups={setCardGroups}
       />
     </>
   );

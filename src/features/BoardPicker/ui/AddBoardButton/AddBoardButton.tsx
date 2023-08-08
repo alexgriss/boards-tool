@@ -1,3 +1,4 @@
+import { Plus } from '@/shared/ui';
 import { AddBoardButtonWrapper } from './styled';
 
 interface IAddBoardButton {
@@ -5,5 +6,7 @@ interface IAddBoardButton {
 }
 
 export const AddBoardButton = ({ onClick }: IAddBoardButton) => (
-  <AddBoardButtonWrapper onClick={onClick}>+</AddBoardButtonWrapper>
+  <AddBoardButtonWrapper onClick={onClick}>
+    <Plus>+</Plus>
+  </AddBoardButtonWrapper>
 );

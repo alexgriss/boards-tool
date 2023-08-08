@@ -12,5 +12,6 @@ export const generateMocks = <T>(structure: T, number = 1) => {
     .map((i: T) => ({
       id: generateRandomString(),
       ...i,
+      title: (i as T & { title: string }).title + ` #${generateRandomString()}`,
     })) as Array<T>;
 };

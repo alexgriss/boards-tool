@@ -7,6 +7,8 @@ export const BoardPickerWrapper = styled.div`
 
   border-bottom: 1px solid ${({ theme }) => theme.border.color};
 
+  background-color: rgba(255, 255, 255, 0.5);
+
   overflow: auto;
 
   &::-webkit-scrollbar {

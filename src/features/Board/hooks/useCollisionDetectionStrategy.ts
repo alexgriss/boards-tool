@@ -9,28 +9,28 @@ import {
   rectIntersection,
 } from '@dnd-kit/core';
 
-import { TBoardItem } from '@/entities';
+import { TCard } from '@/entities';
 
 interface IUseCollisionDetectionStrategy {
   recentlyMovedToNewContainer: MutableRefObject<boolean>;
   activeId: UniqueIdentifier | null;
-  boardItems: Record<string, TBoardItem[]>;
+  cards: Record<string, TCard[]>;
 }
 
 export const useCollisionDetectionStrategy = ({
   recentlyMovedToNewContainer,
   activeId,
-  boardItems,
+  cards,
 }: IUseCollisionDetectionStrategy) => {
   const lastOverId = useRef<UniqueIdentifier | null>(null);
 
   const collisionDetectionStrategy: CollisionDetection = useCallback(
     (args) => {
-      if (activeId && activeId in boardItems) {
+      if (activeId && activeId in cards) {
         return closestCenter({
           ...args,
           droppableContainers: args.droppableContainers.filter(
-            (container) => container.id in boardItems
+            (container) => container.id in cards
           ),
         });
       }
@@ -47,8 +47,8 @@ export const useCollisionDetectionStrategy = ({
       let overId = getFirstCollision(intersections, 'id');
 
       if (overId != null) {
-        if (overId in boardItems) {
-          const containerItems = boardItems[overId];
+        if (overId in cards) {
+          const containerItems = cards[overId];
 
           // If a container is matched and it contains items (columns 'A', 'B', 'C')
           if (containerItems.length > 0) {
@@ -80,7 +80,7 @@ export const useCollisionDetectionStrategy = ({
       // If no droppable is matched, return the last match
       return lastOverId.current ? [{ id: lastOverId.current }] : [];
     },
-    [activeId, boardItems, recentlyMovedToNewContainer]
+    [activeId, cards, recentlyMovedToNewContainer]
   );
 
   return {

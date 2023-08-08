@@ -36,7 +36,7 @@ export const useBoard = ({
 
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const [lastActiveId, setLastActiveId] = useState<UniqueIdentifier | null>(
-    null
+    cardGroups[0]
   );
 
   const recentlyMovedToNewContainer = useRef(false);

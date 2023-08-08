@@ -11,7 +11,7 @@ const boardsMock = generateMocks(
   {
     title: 'Board',
   } as TBoard,
-  5
+  2
 );
 
 const cardsMock: TCardGroups = {

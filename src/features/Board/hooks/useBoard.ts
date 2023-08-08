@@ -14,7 +14,7 @@ import {
 import { arrayMove } from '@dnd-kit/sortable';
 
 import { TCardGroups } from '@/entities';
-import { generateRandomString, scrollIntoView } from '@/shared/utils';
+import { generateRandomString } from '@/shared/utils';
 
 import { useCollisionDetectionStrategy } from './useCollisionDetectionStrategy';
 import { coordinateGetter } from './coordinateGetter';
@@ -241,7 +241,10 @@ export const useBoard = ({
     );
 
     if (boardElement) {
-      scrollIntoView(boardElement);
+      (boardElement.parentNode as HTMLElement).scroll({
+        left: (boardElement as HTMLElement).offsetLeft,
+        behavior: 'smooth',
+      });
     }
   }, [cardGroups, lastActiveId]);
 

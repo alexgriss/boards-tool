@@ -35,6 +35,9 @@ export const useBoard = ({
   const boardRef = useRef<HTMLDivElement>(null);
 
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+  const [lastActiveId, setLastActiveId] = useState<UniqueIdentifier | null>(
+    null
+  );
 
   const recentlyMovedToNewContainer = useRef(false);
 
@@ -56,6 +59,7 @@ export const useBoard = ({
 
   const handleDragStart = ({ active }: DragStartEvent) => {
     setActiveId(active.id);
+    setLastActiveId(active.id);
     setClonedItems(cards);
   };
 
@@ -225,17 +229,21 @@ export const useBoard = ({
     }));
 
     setCardGroups((prev) => [...prev, newCardId]);
+
+    setLastActiveId(null);
   };
 
   useEffect(() => {
     const boardElement = boardRef.current?.children.namedItem(
-      String(cardGroups[cardGroups.length - 1])
+      lastActiveId
+        ? String(lastActiveId)
+        : String(cardGroups[cardGroups.length - 1])
     );
 
     if (boardElement) {
       scrollIntoView(boardElement);
     }
-  }, [cardGroups]);
+  }, [cardGroups, lastActiveId]);
 
   return {
     boardRef,

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { UniqueIdentifier } from '@dnd-kit/core';
 
-import { TBoard, TCardGroups, TCard } from '@/entities';
+import { TBoard, TCard, TCardGroups } from '@/entities';
+
 import { generateMocks } from '@/shared';
 
 import { useAddNewBoard } from './useAddNewBoard';

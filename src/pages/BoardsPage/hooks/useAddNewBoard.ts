@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 import { TBoard } from '@/entities';
+
 import { generateRandomString } from '@/shared/utils';
 
 interface IUseAddNewBoard {

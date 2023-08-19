@@ -8,8 +8,9 @@ import {
   SortableContext,
 } from '@dnd-kit/sortable';
 
-import { TBoard } from '@/entities';
 import { SortableItem } from '@/widgets';
+
+import { TBoard } from '@/entities';
 
 import { BoardPickerItem } from '../BoardPickerItem';
 

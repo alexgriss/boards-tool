@@ -4,9 +4,11 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
+  "env": { "es6": true },
   "plugins": [
     "@typescript-eslint",
-    "react-hooks"
+    "react-hooks",
+    "simple-import-sort"
   ],
   "extends": [
     "plugin:react/recommended",
@@ -18,7 +20,26 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          ["^react", "^@?\\w"],
+          ["^(@dnd-kit*)"],
+          ["^(@/app*)"],
+          ["^(@/pages*)"],
+          ["^(@/widgets*)"],
+          ["^(@/features*)"],
+          ["^(@/entities*)"],
+          ["^(@/shared*)"],
+          ["^\\u0000"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^.+\\.?(css)$"]
+        ]
+      }
+    ]
   },
   "settings": {
     "react": {

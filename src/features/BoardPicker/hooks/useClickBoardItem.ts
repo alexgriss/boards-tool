@@ -24,6 +24,7 @@ export const useClickBoardItem = ({
     }
   };
 
+  // TODO: fix scroll behavior when user clicks on board picker item
   useEffect(() => {
     const activeBoardElement =
       boardPickerRef.current?.children.namedItem(activeBoardId);

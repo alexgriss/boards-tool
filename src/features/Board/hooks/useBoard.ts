@@ -187,8 +187,6 @@ export const useBoard = ({
 
   const handleDragCancel = () => {
     if (clonedItems) {
-      // Reset items to their original state in case items have been
-      // Dragged across containers
       setCards(clonedItems);
     }
 

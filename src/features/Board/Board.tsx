@@ -1,25 +1,28 @@
-import { Dispatch, SetStateAction } from 'react';
+import { CSSProperties, Dispatch, ForwardedRef, SetStateAction } from 'react';
 import { createPortal } from 'react-dom';
 
 import {
   DndContext,
+  DraggableAttributes,
   DragOverlay,
   MeasuringStrategy,
   UniqueIdentifier,
 } from '@dnd-kit/core';
+import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 import {
-  SortableContext,
   horizontalListSortingStrategy,
+  SortableContext,
 } from '@dnd-kit/sortable';
 
-import { TCardGroups } from '@/entities';
 import { SortableItem } from '@/widgets';
 
-import { CardGroup } from '../CardGroup';
-import { Card } from '../Card';
+import { TCardGroups } from '@/entities';
 
-import { BoardWrapper } from './styled';
+import { Card } from '../Card';
+import { CardGroup } from '../CardGroup';
+
 import { useBoard } from './hooks';
+import { BoardWrapper } from './styled';
 import { AddCardGroupButton } from './ui';
 
 interface IBoard {
@@ -78,7 +81,19 @@ export const Board = ({
         >
           {cardGroups.map((groupId) => (
             <SortableItem key={groupId} sortableItemId={groupId}>
-              {({ setNodeRef, style, attributes, listeners, isDragging }) => (
+              {({
+                setNodeRef,
+                style,
+                attributes,
+                listeners,
+                isDragging,
+              }: {
+                setNodeRef: ForwardedRef<HTMLDivElement>;
+                style: CSSProperties;
+                attributes?: DraggableAttributes;
+                listeners?: SyntheticListenerMap;
+                isDragging: boolean;
+              }) => (
                 <CardGroup
                   attributes={attributes}
                   listeners={listeners}
@@ -96,7 +111,7 @@ export const Board = ({
             key="addCardGroupButton"
             sortableItemId="addCardGroupButton"
           >
-            {({ setNodeRef }) => (
+            {({ setNodeRef }: { setNodeRef: ForwardedRef<HTMLDivElement> }) => (
               <AddCardGroupButton ref={setNodeRef} onClick={addNewCardGroup} />
             )}
           </SortableItem>

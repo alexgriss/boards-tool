@@ -15,7 +15,7 @@ export const CardWrapper = styled.div<{
 
   font-size: 14px;
 
-  transition: 0.5s;
+  transition: background-color 0.5s;
 
   opacity: ${({ $isDragging, $isDragOverlay }) =>
     $isDragOverlay || $isDragging ? 0.5 : 1};

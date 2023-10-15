@@ -8,46 +8,52 @@ import {
   SortableContext,
 } from '@dnd-kit/sortable';
 
+import { UseMutationResult } from '@tanstack/react-query';
+
 import { SortableItem } from '@/widgets';
 
-import { TBoard } from '@/entities';
+import { TUser } from '@/entities';
 
 import { BoardPickerItem } from '../BoardPickerItem';
 
 import { useBoardPicker } from './hooks';
 import { BoardPickerWrapper } from './styled';
-import { AddBoardButton } from './ui';
+// import { AddBoardButton } from './ui';
 
 interface IBoardPicker {
-  boards: TBoard[];
-  setBoards: Dispatch<SetStateAction<TBoard[]>>;
-  addNewBoard: () => void;
+  updateUserMutation: UseMutationResult<TUser, unknown, TUser, unknown>;
   activeBoardId: string;
   setActiveBoardId: Dispatch<SetStateAction<string>>;
 }
 
 export const BoardPicker = ({
-  boards,
-  setBoards,
-  addNewBoard,
+  updateUserMutation,
   activeBoardId,
   setActiveBoardId,
 }: IBoardPicker) => {
   const {
     boardPickerRef,
 
-    handleBoardClick,
+    boards,
+    // isLoading,
+    // isError,
+
+    // createBoardMutation,
+    // updateBoardMutation,
+    // removeBoardMutation,
+    // removeBoardsMutation,
 
     activeDraggingBoard,
     sensors,
     handleDragStart,
     handleDragEnd,
     handleDragCancel,
+
+    handleBoardClick,
   } = useBoardPicker({
-    boards,
-    setBoards,
     activeBoardId,
     setActiveBoardId,
+    updateUserMutation,
   });
 
   return (
@@ -82,7 +88,7 @@ export const BoardPicker = ({
           ))}
         </SortableContext>
 
-        <AddBoardButton onClick={addNewBoard} />
+        {/* <AddBoardButton onClick={addNewBoard} /> */}
       </BoardPickerWrapper>
 
       {createPortal(

@@ -27,6 +27,7 @@
         "groups": [
           ["^react", "^@?\\w"],
           ["^(@dnd-kit*)"],
+          ["^(@tanstack*)"],
           ["^(@/app*)"],
           ["^(@/pages*)"],
           ["^(@/widgets*)"],

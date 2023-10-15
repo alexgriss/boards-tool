@@ -1,4 +1,7 @@
+import { TGroup } from '../groups';
+
 export type TBoard = {
   id: string;
-  title: string;
+  name: string;
+  items: TGroup[];
 };

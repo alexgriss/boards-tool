@@ -1,6 +1,4 @@
-# Boiler-replate
-
-> **A base boilerplate to start develop your application with the latest React based on webpack**
+# Boards-tool
 
 ## Quick start
 
@@ -26,8 +24,8 @@
 
 * `webpack`
 
-## File structure
+## Files structure
 
-This boilerplate is based on [Feature-Sliced Design](https://feature-sliced.design/)
+Files structure approach in this application is based on [Feature-Sliced Design](https://feature-sliced.design/)
 
-> You can use `@` sign for es6 imports as an alias of  `src` folder, e.g.: `@/widgets`
+> You can use `@` sign for es6 imports as an alias of  `src` folder, e.g.: `@/features`

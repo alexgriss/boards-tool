@@ -1,7 +1,8 @@
 import { styled } from 'styled-components';
 
 export const CardGroupWrapper = styled.div<{
-  $isDragOverlay?: boolean;
+  $isDragOverlay: boolean;
+  $isDragging: boolean;
 }>`
   width: 272px;
   min-width: 272px;
@@ -14,7 +15,9 @@ export const CardGroupWrapper = styled.div<{
 
   background-color: rgba(255, 255, 255, 0.6);
 
-  opacity: ${({ $isDragOverlay }) => ($isDragOverlay ? 0.5 : 0.8)};
+  opacity: ${({ $isDragging, $isDragOverlay }) =>
+    $isDragOverlay ? 0.5 : $isDragging ? 0 : 1};
+
   scroll-margin: 320px;
 
   &:last-of-type {

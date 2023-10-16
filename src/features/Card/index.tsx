@@ -22,7 +22,7 @@ const CardView = (
       {...props}
       ref={ref}
       $isDragging={isDragging}
-      $isDragOverlay={isDragOverlay}
+      $isDragOverlay={Boolean(isDragOverlay)}
       id={card.id}
     >
       {card.title}

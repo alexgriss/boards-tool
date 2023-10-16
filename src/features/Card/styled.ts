@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const CardWrapper = styled.div<{
   $isDragging: boolean;
-  $isDragOverlay?: boolean;
+  $isDragOverlay: boolean;
 }>`
   margin-bottom: 8px;
   padding: 10px;
@@ -15,10 +15,10 @@ export const CardWrapper = styled.div<{
 
   font-size: 14px;
 
-  transition: 0.5s;
+  transition: 0.5s background-color;
 
   opacity: ${({ $isDragging, $isDragOverlay }) =>
-    $isDragOverlay || $isDragging ? 0.5 : 1};
+    $isDragOverlay ? 0.5 : $isDragging ? 0 : 1};
 
   cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'pointer')};
 

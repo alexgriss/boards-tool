@@ -34,7 +34,7 @@ const BoardPickerItemView = (
       onClick={() => handleBoardClick(board.id)}
       $isActive={isActive}
       $isDragging={isDragging}
-      $isDragOverlay={isDragOverlay}
+      $isDragOverlay={Boolean(isDragOverlay)}
       id={board.id}
     >
       <Icon

@@ -5,7 +5,7 @@ import { Icon as IconWidget } from '../icon';
 interface ISBoardPickerItem {
   $isActive: boolean;
   $isDragging: boolean;
-  $isDragOverlay?: boolean;
+  $isDragOverlay: boolean;
 }
 
 export const BoardPickerItemWrapper = styled.div<ISBoardPickerItem>`
@@ -23,10 +23,10 @@ export const BoardPickerItemWrapper = styled.div<ISBoardPickerItem>`
     ${({ $isActive, theme }) =>
       $isActive ? theme.text.main.color : 'transparent'};
 
+  transition: 0.5s background-color;
+
   opacity: ${({ $isDragging, $isDragOverlay }) =>
     $isDragOverlay ? 0.5 : $isDragging ? 0 : 1};
-
-  transition: 0.5s;
 
   cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'pointer')};
   user-select: none;

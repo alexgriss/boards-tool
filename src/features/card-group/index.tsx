@@ -43,7 +43,8 @@ const CardGroupView = (
     <CardGroupWrapper
       {...props}
       ref={ref}
-      $isDragOverlay={isDragOverlay}
+      $isDragOverlay={Boolean(isDragOverlay)}
+      $isDragging={isDragging}
       id={groupId}
     >
       <CardGroupHeader $isDragging={isDragging} {...attributes} {...listeners}>

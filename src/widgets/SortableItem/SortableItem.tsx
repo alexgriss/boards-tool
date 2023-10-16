@@ -1,9 +1,9 @@
 import { CSSProperties, ReactNode } from 'react';
 
 import { DraggableAttributes, UniqueIdentifier } from '@dnd-kit/core';
-import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 
 interface ISortableItemChildrenProps {
   setNodeRef: (node: HTMLElement | null) => void;

@@ -1,12 +1,12 @@
 import { MutableRefObject, useCallback, useRef } from 'react';
 
 import {
-  closestCenter,
   CollisionDetection,
+  UniqueIdentifier,
+  closestCenter,
   getFirstCollision,
   pointerWithin,
   rectIntersection,
-  UniqueIdentifier,
 } from '@dnd-kit/core';
 
 import { TCard } from '@/entities';

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { IIconMainProps } from './types';
 
 const getSizes = ({

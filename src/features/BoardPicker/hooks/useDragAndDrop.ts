@@ -12,9 +12,7 @@ import {
 } from '@dnd-kit/core';
 import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
-import { UseMutationResult } from '@tanstack/react-query';
-
-import { TBoard, TUser } from '@/entities';
+import { TBoard } from '@/entities';
 
 const activationConstraint = {
   delay: 100,
@@ -23,10 +21,10 @@ const activationConstraint = {
 
 interface IUseDragAndDrop {
   boards: TBoard[];
-  updateBoards: (boards: TBoard[]) => void;
+  setBoards: Dispatch<SetStateAction<TBoard[]>>;
 }
 
-export const useDragAndDrop = ({ boards, updateBoards }: IUseDragAndDrop) => {
+export const useDragAndDrop = ({ boards, setBoards }: IUseDragAndDrop) => {
   const [activeDraggingBoardId, setActiveDraggingBoardId] =
     useState<UniqueIdentifier | null>(null);
 
@@ -65,7 +63,7 @@ export const useDragAndDrop = ({ boards, updateBoards }: IUseDragAndDrop) => {
         : -1;
 
       if (activeIndex !== overIndex) {
-        updateBoards((items) => arrayMove(items, activeIndex, overIndex));
+        setBoards((items) => arrayMove(items, activeIndex, overIndex));
       }
     }
   };

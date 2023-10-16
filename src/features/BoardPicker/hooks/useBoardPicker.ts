@@ -1,36 +1,24 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
 
-import { UseMutationResult } from '@tanstack/react-query';
+import { TBoard } from '@/entities';
 
-import { TBoard, TUser } from '@/entities';
-
-import { useBoardsData } from './useBoardsData';
-import { useClickBoardItem } from './useClickBoardItem';
 import { useDragAndDrop } from './useDragAndDrop';
+import { useClickBoardItem } from './useClickBoardItem';
 
 interface IUseBoardPicker {
+  boards: TBoard[];
+  setBoards: Dispatch<SetStateAction<TBoard[]>>;
   activeBoardId: string;
   setActiveBoardId: Dispatch<SetStateAction<string>>;
-  updateUserMutation: UseMutationResult<TUser, unknown, TUser, unknown>;
 }
 
 export const useBoardPicker = ({
+  boards,
+  setBoards,
   activeBoardId,
   setActiveBoardId,
-  updateUserMutation,
 }: IUseBoardPicker) => {
   const boardPickerRef = useRef<HTMLDivElement>(null);
-
-  const {
-    boards,
-    isLoading,
-    isError,
-
-    createBoardMutation,
-    updateBoardMutation,
-    removeBoardMutation,
-    removeBoardsMutation,
-  } = useBoardsData({ setActiveBoardId });
 
   const {
     activeDraggingBoard,
@@ -38,14 +26,7 @@ export const useBoardPicker = ({
     handleDragStart,
     handleDragEnd,
     handleDragCancel,
-  } = useDragAndDrop({
-    boards,
-    updateBoards: (boards: TBoard[]) =>
-      updateUserMutation.mutate({
-        username: 'alexgriss',
-        items: boards,
-      }),
-  });
+  } = useDragAndDrop({ boards, setBoards });
 
   const { handleBoardClick } = useClickBoardItem({
     boardPickerRef,
@@ -56,21 +37,12 @@ export const useBoardPicker = ({
   return {
     boardPickerRef,
 
-    boards,
-    isLoading,
-    isError,
-
-    createBoardMutation,
-    updateBoardMutation,
-    removeBoardMutation,
-    removeBoardsMutation,
+    handleBoardClick,
 
     activeDraggingBoard,
     sensors,
     handleDragStart,
     handleDragEnd,
     handleDragCancel,
-
-    handleBoardClick,
   };
 };

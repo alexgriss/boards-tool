@@ -1,4 +1,6 @@
 export type TCard = {
   id: string;
-  name: string;
+  title: string;
 };
+
+export type TCardGroups = Record<string, TCard[]>;

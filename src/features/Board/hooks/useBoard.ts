@@ -14,11 +14,10 @@ import {
 import { arrayMove } from '@dnd-kit/sortable';
 
 import { TCardGroups } from '@/entities';
-
 import { generateRandomString } from '@/shared/utils';
 
-import { coordinateGetter } from './coordinateGetter';
 import { useCollisionDetectionStrategy } from './useCollisionDetectionStrategy';
+import { coordinateGetter } from './coordinateGetter';
 
 interface IUseBoard {
   cards: TCardGroups;
@@ -187,6 +186,8 @@ export const useBoard = ({
 
   const handleDragCancel = () => {
     if (clonedItems) {
+      // Reset items to their original state in case items have been
+      // Dragged across containers
       setCards(clonedItems);
     }
 

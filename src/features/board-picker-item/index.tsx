@@ -2,7 +2,7 @@ import { CSSProperties, ForwardedRef, forwardRef } from 'react';
 
 import { TBoard } from '@/entities';
 
-import { Text } from '../Text';
+import { Text } from '../text';
 
 import ColumnsIcon from './icons/columns-icon.svg';
 import { BoardPickerItemWrapper, Icon } from './styled';
@@ -43,6 +43,7 @@ const BoardPickerItemView = (
         icon={<ColumnsIcon />}
         $isActive={isActive}
       />
+
       <Text size="s" color={isActive ? 'main' : 'title'}>
         {board.title}
       </Text>

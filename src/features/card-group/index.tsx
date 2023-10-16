@@ -9,9 +9,9 @@ import {
 
 import { TCard } from '@/entities';
 
-import { AddCardButton } from '../AddCardButton';
-import { Card } from '../Card';
-import { SortableItem } from '../SortableItem';
+import { AddCardButton } from '../add-card-button';
+import { Card } from '../card';
+import { SortableItem } from '../sortable-item';
 
 import { CardGroupHeader, CardGroupWrapper } from './styled';
 

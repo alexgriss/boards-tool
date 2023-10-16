@@ -3,14 +3,15 @@
  *
  * @param element HTMLElement
  * @param rect DOMRect
+ * @returns boolean
  * */
 export const isInViewport = (
   element: HTMLElement,
   { right, width } = element.getBoundingClientRect()
 ) => {
-  return (
+  return Boolean(
     element.parentElement &&
-    right <= element.parentElement.offsetWidth &&
-    right + width >= 0
+      right <= element.parentElement.offsetWidth &&
+      right + width >= 0
   );
 };

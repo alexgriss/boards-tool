@@ -6,7 +6,7 @@ import { TBoard, TCard, TCardGroups } from '@/entities';
 
 import { generateMocks } from '@/shared';
 
-import { useAddNewBoard } from './useAddNewBoard';
+import { useAddNewBoard } from './use-add-new-board';
 
 const boardsMock = generateMocks(
   {

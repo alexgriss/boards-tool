@@ -1,4 +1,4 @@
-export { isInViewport } from './isInViewport';
-export { generateMocks } from './generateMocks';
-export { generateRandomString } from './generateRandomString';
-export { scrollIntoView, scrollOptions } from './scrollIntoView';
+export { isInViewport } from './is-in-viewport';
+export { generateMocks } from './generate-mocks';
+export { generateRandomString } from './generate-random-string';
+export { scrollIntoView, scrollOptions } from './scroll-into-view';

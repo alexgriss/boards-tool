@@ -1,9 +1,6 @@
-import { SContainer } from './styled';
+import styled from 'styled-components';
 
-interface IContainer {
-  children: React.ReactNode;
-}
-
-export const Container = ({ children }: IContainer) => (
-  <SContainer>{children}</SContainer>
-);
+export const Container = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+`;

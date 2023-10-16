@@ -14,10 +14,10 @@ import {
 
 import { TCardGroups } from '@/entities';
 
-import { AddCardGroupButton } from '../AddCardGroupButton';
-import { Card } from '../Card';
-import { CardGroup } from '../CardGroup';
-import { SortableItem } from '../SortableItem';
+import { AddCardGroupButton } from '../add-card-group-button';
+import { Card } from '../card';
+import { CardGroup } from '../card-group';
+import { SortableItem } from '../sortable-item';
 
 import { useBoard } from './hooks';
 import { BoardWrapper } from './styled';

@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction, useRef } from 'react';
 
 import { TBoard } from '@/entities';
 
-import { useClickBoardItem } from './useClickBoardItem';
-import { useDragAndDrop } from './useDragAndDrop';
+import { useClickBoardItem } from './use-click-board-item';
+import { useDragAndDrop } from './use-drag-and-drop';
 
 interface IUseBoardPicker {
   boards: TBoard[];

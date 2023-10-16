@@ -1,4 +1,4 @@
-import { generateRandomString } from './generateRandomString';
+import { generateRandomString } from './generate-random-string';
 
 /**
  * **generateMocks** returns an array from given *structure* with *number* elements

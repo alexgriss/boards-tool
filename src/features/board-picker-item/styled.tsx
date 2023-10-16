@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Icon as IconWidget } from '../Icon';
+import { Icon as IconWidget } from '../icon';
 
 interface ISBoardPickerItem {
   $isActive: boolean;

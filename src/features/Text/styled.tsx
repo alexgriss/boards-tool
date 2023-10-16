@@ -18,10 +18,12 @@ const sizeDict: Record<TTextSize, number> = {
 };
 
 const getFontSize = ({ size }: { size: TTextSize }) => sizeDict[size];
+
 const getColor = ({ color, theme }: { color: TTextColor; theme: Theme }) =>
   theme.text[color].color;
 
 export const TextWrapper = styled.div<ITextWrapper>`
   font-size: ${getFontSize}px;
+
   color: ${getColor};
 `;

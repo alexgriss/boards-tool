@@ -5,8 +5,10 @@ interface IIcon extends IIconMainProps {
   icon: React.ReactNode;
 }
 
-export const Icon = ({ width, height, fill, icon }: IIcon) => (
-  <IconWrapper width={width} height={height} fill={fill}>
-    {icon}
-  </IconWrapper>
-);
+export const Icon = ({ width, height, fill, icon }: IIcon) => {
+  return (
+    <IconWrapper width={width} height={height} fill={fill}>
+      {icon}
+    </IconWrapper>
+  );
+};

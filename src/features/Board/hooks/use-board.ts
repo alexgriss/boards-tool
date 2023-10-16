@@ -17,8 +17,8 @@ import { TCardGroups } from '@/entities';
 
 import { generateRandomString } from '@/shared/utils';
 
-import { coordinateGetter } from './coordinateGetter';
-import { useCollisionDetectionStrategy } from './useCollisionDetectionStrategy';
+import { coordinateGetter } from './coordinate-getter';
+import { useCollisionDetectionStrategy } from './use-collision-detection-strategy';
 
 interface IUseBoard {
   cards: TCardGroups;
@@ -102,11 +102,12 @@ export const useBoard = ({
         if (overId in items) {
           newIndex = overItems.length + 1;
         } else {
-          const isBelowOverItem =
+          const isBelowOverItem = Boolean(
             over &&
-            active.rect.current.translated &&
-            active.rect.current.translated.top >
-              over.rect.top + over.rect.height;
+              active.rect.current.translated &&
+              active.rect.current.translated.top >
+                over.rect.top + over.rect.height
+          );
 
           const modifier = isBelowOverItem ? 1 : 0;
 

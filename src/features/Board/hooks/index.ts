@@ -1,1 +1,1 @@
-export { useBoard } from './useBoard';
+export { useBoard } from './use-board';

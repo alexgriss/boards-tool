@@ -10,9 +10,9 @@ import {
 
 import { TBoard } from '@/entities';
 
-import { AddBoardButton } from '../AddBoardButton';
-import { BoardPickerItem } from '../BoardPickerItem';
-import { SortableItem } from '../SortableItem';
+import { AddBoardButton } from '../add-board-button';
+import { BoardPickerItem } from '../board-picker-item';
+import { SortableItem } from '../sortable-item';
 
 import { useBoardPicker } from './hooks';
 import { BoardPickerWrapper } from './styled';

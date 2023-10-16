@@ -41,7 +41,7 @@ export const useData = <T extends { id: string }>({
 
       return { prev };
     },
-    onError: (err, entity, context) => {
+    onError: (err, _entity, context) => {
       console.log(`create ${queryKey} error: `, err);
 
       queryClient.setQueryData([queryKey], context?.prev);
@@ -93,7 +93,7 @@ export const useData = <T extends { id: string }>({
 
       queryClient.setQueryData([queryKey, id], context?.prev);
     },
-    onSettled: (entity, error, id) => {
+    onSettled: (_entity, _error, id) => {
       queryClient.invalidateQueries([queryKey, id]);
     },
   });
@@ -109,7 +109,7 @@ export const useData = <T extends { id: string }>({
 
       return { prev };
     },
-    onError: (err, data, context) => {
+    onError: (err, _data, context) => {
       console.log(`remove ${queryKey} error: `, err);
       queryClient.setQueryData([queryKey], context?.prev);
     },

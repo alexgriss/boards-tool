@@ -6,7 +6,8 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "react-hooks"
+    "react-hooks",
+    "simple-import-sort"
   ],
   "extends": [
     "plugin:react/recommended",
@@ -14,11 +15,30 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          ["^react", "^@?\\w"],
+          ["^(@dnd-kit*)"],
+          ["^(@/app*)"],
+          ["^(@/pages*)"],
+          ["^(@/features*)"],
+          ["^(@/entities*)"],
+          ["^(@/shared*)"],
+          ["^\\u0000"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^.+\\.?(css)$"]
+        ]
+      }
+    ]
   },
   "settings": {
     "react": {

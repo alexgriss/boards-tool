@@ -9,13 +9,13 @@ import {
 } from '@dnd-kit/sortable';
 
 import { TBoard } from '@/entities';
-import { SortableItem } from '@/widgets';
 
+import { AddBoardButton } from '../AddBoardButton';
 import { BoardPickerItem } from '../BoardPickerItem';
+import { SortableItem } from '../SortableItem';
 
 import { useBoardPicker } from './hooks';
 import { BoardPickerWrapper } from './styled';
-import { AddBoardButton } from './ui';
 
 interface IBoardPicker {
   boards: TBoard[];

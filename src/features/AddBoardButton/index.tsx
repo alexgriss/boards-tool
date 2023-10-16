@@ -1,4 +1,5 @@
 import { Plus } from '@/shared/ui';
+
 import { AddBoardButtonWrapper } from './styled';
 
 interface IAddBoardButton {

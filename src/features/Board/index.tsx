@@ -8,19 +8,19 @@ import {
   UniqueIdentifier,
 } from '@dnd-kit/core';
 import {
-  SortableContext,
   horizontalListSortingStrategy,
+  SortableContext,
 } from '@dnd-kit/sortable';
 
 import { TCardGroups } from '@/entities';
-import { SortableItem } from '@/widgets';
 
-import { CardGroup } from '../CardGroup';
+import { AddCardGroupButton } from '../AddCardGroupButton';
 import { Card } from '../Card';
+import { CardGroup } from '../CardGroup';
+import { SortableItem } from '../SortableItem';
 
-import { BoardWrapper } from './styled';
 import { useBoard } from './hooks';
-import { AddCardGroupButton } from './ui';
+import { BoardWrapper } from './styled';
 
 interface IBoard {
   cards: TCardGroups;

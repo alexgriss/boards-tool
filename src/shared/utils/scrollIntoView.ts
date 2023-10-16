@@ -14,5 +14,8 @@ export const scrollIntoView = (
   element: Element,
   childIndex?: number,
   options: ScrollIntoViewOptions = scrollOptions.smooth
-) =>
-  (childIndex ? element.children[childIndex] : element).scrollIntoView(options);
+) => {
+  return (childIndex ? element.children[childIndex] : element).scrollIntoView(
+    options
+  );
+};

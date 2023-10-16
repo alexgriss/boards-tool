@@ -1,11 +1,11 @@
 import { CSSProperties, ForwardedRef, forwardRef } from 'react';
 
 import { TBoard } from '@/entities';
-import { Text } from '@/widgets';
 
-import { BoardPickerItemWrapper, Icon } from './styled';
+import { Text } from '../Text';
 
 import ColumnsIcon from './icons/columns-icon.svg';
+import { BoardPickerItemWrapper, Icon } from './styled';
 
 interface IBoardPickerItemView {
   board: TBoard;

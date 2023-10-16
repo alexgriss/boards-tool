@@ -1,20 +1,19 @@
 import { CSSProperties, ForwardedRef, forwardRef } from 'react';
 
+import { DraggableAttributes } from '@dnd-kit/core';
+import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 
-import { DraggableAttributes } from '@dnd-kit/core';
-import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
-
-import { SortableItem } from '@/widgets';
 import { TCard } from '@/entities';
 
+import { AddCardButton } from '../AddCardButton';
 import { Card } from '../Card';
+import { SortableItem } from '../SortableItem';
 
 import { CardGroupHeader, CardGroupWrapper } from './styled';
-import { AddCardButton } from './ui';
 
 interface ICardGroupView {
   attributes?: DraggableAttributes;

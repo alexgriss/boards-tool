@@ -14,10 +14,11 @@ import {
 import { arrayMove } from '@dnd-kit/sortable';
 
 import { TCardGroups } from '@/entities';
+
 import { generateRandomString } from '@/shared/utils';
 
-import { useCollisionDetectionStrategy } from './useCollisionDetectionStrategy';
 import { coordinateGetter } from './coordinateGetter';
+import { useCollisionDetectionStrategy } from './useCollisionDetectionStrategy';
 
 interface IUseBoard {
   cards: TCardGroups;

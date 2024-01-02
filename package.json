@@ -13,6 +13,7 @@
     "@dnd-kit/core": "^6.0.8",
     "@dnd-kit/modifiers": "^7.0.0",
     "@dnd-kit/sortable": "^8.0.0",
+    "anyboards-proto": "github:anyboards/proto",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",

@@ -7,7 +7,12 @@ const commonConfig: Configuration = {
     rules: [
       {
         test: /\.(ts|js)x?$/i,
-        exclude: /node_modules/,
+        exclude: [
+          {
+            and: [path.resolve(__dirname, 'node_modules')],
+            not: [path.resolve(__dirname, 'node_modules/anyboards-proto')],
+          },
+        ],
         use: {
           loader: 'babel-loader',
           options: {

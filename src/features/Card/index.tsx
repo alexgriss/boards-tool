@@ -12,7 +12,7 @@ interface ICardView {
 }
 
 const CardView = (
-  { card, isDragging: isDraggingd, isDragOverlay, ...props }: ICardView,
+  { card, isDragging, isDragOverlay, ...props }: ICardView,
   ref: ForwardedRef<HTMLDivElement>
 ) => {
   if (!card) return null;
@@ -21,7 +21,7 @@ const CardView = (
     <CardWrapper
       {...props}
       ref={ref}
-      $isDragging={isDraggingd}
+      $isDragging={isDragging}
       $isDragOverlay={Boolean(isDragOverlay)}
       id={card.id}
     >

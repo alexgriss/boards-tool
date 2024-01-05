@@ -1,26 +1,31 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ListBoardResponseItem } from 'anyboards-proto/gen/js/boards/boards_pb';
-import { BoardsClient } from 'anyboards-proto/gen/js/boards/BoardsServiceClientPb';
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 import { ThemeProvider } from 'styled-components';
+
+import { Duration } from 'google-protobuf/google/protobuf/duration_pb';
+
+import {
+  StreamRequest,
+  StreamResponse,
+} from 'anyboards-proto/gen/js/debug/debug_pb';
+import { DebugClient } from 'anyboards-proto/gen/js/debug/DebugServiceClientPb';
 
 import { App } from '@/app';
 
 import { GlobalStyle, theme } from '@/shared';
 
 const connect = async () => {
-  const boardsClient = new BoardsClient('http://localhost:2222');
+  const debugClient = new DebugClient('http://localhost:2222');
 
-  const boardsList = await boardsClient
-    .listBoards(new google_protobuf_empty_pb.Empty(), null)
-    .then((res) =>
-      res
-        .getItemList()
-        .map((board) => board.toObject() as ListBoardResponseItem.AsObject)
-    );
+  const streamRequest = new StreamRequest();
 
-  console.log(boardsList);
+  streamRequest.setInterval(new Duration().setSeconds(3));
+
+  const stream = debugClient.stream(streamRequest);
+
+  stream.on('data', (response: StreamResponse) => {
+    console.log(response.getMessageNum());
+  });
 };
 
 const container = document.getElementById('root') as HTMLElement;

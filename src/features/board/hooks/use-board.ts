@@ -18,7 +18,6 @@ import { TCardGroups } from '@/entities';
 import { generateRandomString } from '@/shared/utils';
 
 import { coordinateGetter } from './coordinate-getter';
-import { useCollisionDetectionStrategy } from './use-collision-detection-strategy';
 
 interface IUseBoard {
   cards: TCardGroups;
@@ -51,12 +50,6 @@ export const useBoard = ({
       coordinateGetter,
     })
   );
-
-  const { collisionDetectionStrategy } = useCollisionDetectionStrategy({
-    recentlyMovedToNewContainer,
-    activeId,
-    cards,
-  });
 
   const handleDragStart = ({ active }: DragStartEvent) => {
     setActiveId(active.id);
@@ -254,7 +247,6 @@ export const useBoard = ({
     boardRef,
 
     sensors,
-    collisionDetectionStrategy,
     handleDragStart,
     handleDragOver,
     handleDragEnd,

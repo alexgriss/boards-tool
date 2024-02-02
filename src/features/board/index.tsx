@@ -39,7 +39,6 @@ export const Board = ({
     boardRef,
 
     sensors,
-    collisionDetectionStrategy,
     handleDragStart,
     handleDragOver,
     handleDragEnd,
@@ -60,7 +59,6 @@ export const Board = ({
   return (
     <DndContext
       sensors={sensors}
-      collisionDetection={collisionDetectionStrategy}
       measuring={{
         droppable: {
           strategy: MeasuringStrategy.Always,

@@ -90,6 +90,7 @@ export const Board = ({
               )}
             </SortableItem>
           ))}
+
           <SortableItem
             key="addCardGroupButton"
             sortableItemId="addCardGroupButton"

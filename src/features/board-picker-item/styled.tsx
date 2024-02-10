@@ -28,7 +28,7 @@ export const BoardPickerItemWrapper = styled.div<ISBoardPickerItem>`
   opacity: ${({ $isDragging, $isDragOverlay }) =>
     $isDragOverlay ? 0.5 : $isDragging ? 0 : 1};
 
-  cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'pointer')};
+  cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'grab')};
   user-select: none;
   scroll-margin: 50px;
 

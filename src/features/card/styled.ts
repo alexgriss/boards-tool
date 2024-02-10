@@ -20,7 +20,7 @@ export const CardWrapper = styled.div<{
   opacity: ${({ $isDragging, $isDragOverlay }) =>
     $isDragOverlay ? 0.5 : $isDragging ? 0 : 1};
 
-  cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'pointer')};
+  cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'grab')};
 
   &:hover {
     background-color: rgba(0, 0, 0, 1);

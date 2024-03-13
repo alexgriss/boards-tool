@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(-45deg, #496fdf, #9a3ce7, #079977, #0d8499);
+    background: #0d8499;
     background-size: 400% 400%;
 
     min-height: calc(100% - 38px);
